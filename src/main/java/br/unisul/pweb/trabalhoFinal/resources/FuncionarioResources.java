@@ -1,7 +1,8 @@
 package br.unisul.pweb.trabalhoFinal.resources;
 
 import java.net.URI;
-
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
+import br.unisul.pweb.trabalhoFinal.dtos.FuncionarioDTO;
 import br.unisul.pweb.trabalhoFinal.services.FuncionarioService;
+
 @RestController
 @RequestMapping(value="/funcionarios")
 public class FuncionarioResources {
@@ -50,5 +53,18 @@ public class FuncionarioResources {
 			service.delete(id);
 			return ResponseEntity.noContent().build();
 		}
+		
+		/*
+		//LISTAR TODAS
+				@RequestMapping(method=RequestMethod.GET)
+				public ResponseEntity<List<FuncionarioDTO>> findAll() {
+					List<Funcionario> lista = service.findAll();
+					//ou for para percorrer a lista
+					List<FuncionarioDTO> listaDTO = lista.stream().map(obj -> new FuncionarioDTO(obj)).collect(Collectors.toList()); 
+					return ResponseEntity.ok().body(listaDTO);
+				}
+				
+				*/
+			
 	
 }

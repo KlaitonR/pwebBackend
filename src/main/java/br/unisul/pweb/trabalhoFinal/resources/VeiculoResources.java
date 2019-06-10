@@ -1,6 +1,8 @@
 package br.unisul.pweb.trabalhoFinal.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
+import br.unisul.pweb.trabalhoFinal.dtos.VeiculoDTO;
 import br.unisul.pweb.trabalhoFinal.services.VeiculoService;
 
 @RestController
@@ -50,5 +53,16 @@ public class VeiculoResources {
 			service.delete(id);
 			return ResponseEntity.noContent().build();
 		}
+		
+		/*
+		//LISTAR TODAS
+		@RequestMapping(method=RequestMethod.GET)
+		public ResponseEntity<List<VeiculoDTO>> findAll() {
+			List<Veiculo> lista = service.findAll();
+			//ou for para percorrer a lista
+			List<VeiculoDTO> listaDTO = lista.stream().map(obj -> new VeiculoDTO(obj)).collect(Collectors.toList()); 
+			return ResponseEntity.ok().body(listaDTO);
+		}
+		*/
 	
 }

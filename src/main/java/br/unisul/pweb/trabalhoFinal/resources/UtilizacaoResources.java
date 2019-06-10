@@ -1,6 +1,8 @@
 package br.unisul.pweb.trabalhoFinal.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
+import br.unisul.pweb.trabalhoFinal.dtos.UtilizacaoDTO;
 import br.unisul.pweb.trabalhoFinal.services.UtilizacaoService;
 
 @RestController
@@ -50,5 +53,15 @@ public class UtilizacaoResources {
 			service.delete(id);
 			return ResponseEntity.noContent().build();
 		}
-
+		
+		/*
+		//LISTAR TODAS
+		@RequestMapping(method=RequestMethod.GET)
+		public ResponseEntity<List<UtilizacaoDTO>> findAll() {
+			List<Utilizacao> lista = service.findAll();
+			//ou for para percorrer a lista
+			List<UtilizacaoDTO> listaDTO = lista.stream().map(obj -> new UtilizacaoDTO(obj)).collect(Collectors.toList()); 
+			return ResponseEntity.ok().body(listaDTO);
+		}
+		*/
 }

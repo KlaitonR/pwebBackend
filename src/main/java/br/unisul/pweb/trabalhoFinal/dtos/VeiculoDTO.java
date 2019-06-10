@@ -1,40 +1,33 @@
-package br.unisul.pweb.trabalhoFinal.domain;
+package br.unisul.pweb.trabalhoFinal.dtos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
+import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
 
-@Entity
-public class Veiculo implements Serializable {
-
+public class VeiculoDTO implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
-	@Id //chave primaria
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto encremento
 	private Integer id;
-	
 	private int ano;
 	private String placa;
 	private String marca;
 	private String modelo;
 	
-	///*
-	@JsonIgnore
-	@OneToMany(mappedBy="veiculo")
 	private List<Utilizacao> utilizacoes = new ArrayList<>();
-	//*/
 	
-	public Veiculo() {
+	public VeiculoDTO() {
 		
 	}
 	
-	public Veiculo (int ano,String placa,String marca,String modelo) {
+	public VeiculoDTO(Veiculo v) {
+		id = v.getId();
+		v.toString();
+	}
+	
+	public VeiculoDTO (int ano,String placa,String marca,String modelo) {
 		super();
 		this.ano = ano;
 		this.placa = placa;
@@ -113,7 +106,7 @@ public class Veiculo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Veiculo other = (Veiculo) obj;
+		VeiculoDTO other = (VeiculoDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -121,5 +114,5 @@ public class Veiculo implements Serializable {
 			return false;
 		return true;
 	}
-	
+
 }

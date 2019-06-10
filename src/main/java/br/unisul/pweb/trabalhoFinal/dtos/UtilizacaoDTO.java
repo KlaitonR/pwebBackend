@@ -1,20 +1,14 @@
-package br.unisul.pweb.trabalhoFinal.domain;
+package br.unisul.pweb.trabalhoFinal.dtos;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
+import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
+import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
 
-@Entity
-public class Utilizacao implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class UtilizacaoDTO implements Serializable{
 	
-	@Id //chave primaria
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto encremento
+private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	
 	private String nomeFuncionario;
@@ -24,21 +18,20 @@ public class Utilizacao implements Serializable {
 	private double kmInicial;
 	private double kmFinal;
 	
-	///*
-	@ManyToOne
-	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;
 	
-	@ManyToOne
-	@JoinColumn(name="veiculo_id")
 	private Veiculo vl;
-	//*/
 	
-	public Utilizacao() {
+	public UtilizacaoDTO() {
 		
 	}
 	
-	public Utilizacao(Veiculo MarcaModelo,Funcionario nomeFun, int dt,int hr, double kmIn, double kmFin) {
+	public UtilizacaoDTO(Utilizacao u) {
+		id = u.getId();
+		veiculo = u.getVeiculo();
+	}
+	
+	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, int dt,int hr, double kmIn, double kmFin) {
 		super();
 		this.veiculo = MarcaModelo.toString();
 		this.nomeFuncionario = nomeFun.getNome();
@@ -93,6 +86,7 @@ public class Utilizacao implements Serializable {
 		this.veiculo = veiculo;
 	}
 	
+	
 	///*
 	public Funcionario getFuncionario() {
 		return funcionario;
@@ -102,13 +96,14 @@ public class Utilizacao implements Serializable {
 		this.funcionario = funcionario;
 	}
 
-	public Veiculo getVl() {
+	public Veiculo getVeiculos() {
 		return vl;
 	}
 
-	public void setVl(Veiculo vl) {
-		this.vl = vl;
+	public void setVeiculos(Veiculo veiculos) {
+		this.vl = veiculos;
 	}
+	//*/
 
 	@Override
 	public int hashCode() {
@@ -117,6 +112,7 @@ public class Utilizacao implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -125,7 +121,7 @@ public class Utilizacao implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Utilizacao other = (Utilizacao) obj;
+		UtilizacaoDTO other = (UtilizacaoDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

@@ -1,9 +1,9 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
 import br.unisul.pweb.trabalhoFinal.repositories.FuncionarioRepository;
 
@@ -36,5 +36,13 @@ public class FuncionarioService {
 	 find(id);
 	 rep.deleteById(id);
 	}
+	
+	/*
+	//LISTAR TODAS
+		 public List<Funcionario> findAll(){
+			 // return rep.findAll();
+			 return rep.findAllByOrderByNome();
+		 }
+	*/
 
 }

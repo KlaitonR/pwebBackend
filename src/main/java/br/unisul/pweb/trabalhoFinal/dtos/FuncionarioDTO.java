@@ -1,41 +1,34 @@
-package br.unisul.pweb.trabalhoFinal.domain;
+package br.unisul.pweb.trabalhoFinal.dtos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
+import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 
-@Entity
-public class Funcionario implements Serializable{
+public class FuncionarioDTO implements Serializable{
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id //chave primaria
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto encremento
+private static final long serialVersionUID = 1L;
 	private Integer id;
 	
 	private String nome;
 	
-	///*
-	@JsonIgnore
-	@OneToMany(mappedBy="funcionario")
 	private List<Utilizacao> utilizacoes = new ArrayList<>();
-	//*/
 	
-	public Funcionario() {
+	
+	public FuncionarioDTO() {
 		
 	}
 	
-	public Funcionario(String nome) {
+	public FuncionarioDTO(Funcionario f) {
+		id = f.getId();
+		nome = f.getNome();
+	}
+	
+	public FuncionarioDTO(String nome) {
 		super();
 		this.nome = nome;
 	}
-	
 
 	public Integer getId() {
 		return id;
@@ -52,8 +45,6 @@ public class Funcionario implements Serializable{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	///*
 	
 	public List<Utilizacao> getUtilizacoes() {
 		return utilizacoes;
@@ -62,8 +53,6 @@ public class Funcionario implements Serializable{
 	public void setUtilizacoes(List<Utilizacao> utilizacoes) {
 		this.utilizacoes = utilizacoes;
 	}
-	
-	//*/
 
 	@Override
 	public int hashCode() {
@@ -81,7 +70,7 @@ public class Funcionario implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Funcionario other = (Funcionario) obj;
+		FuncionarioDTO other = (FuncionarioDTO) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -89,5 +78,5 @@ public class Funcionario implements Serializable{
 			return false;
 		return true;
 	}
-
+	
 }

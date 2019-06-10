@@ -1,5 +1,6 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,4 +37,12 @@ public class UtilizacaoService {
 	 find(id);
 	 rep.deleteById(id);
 	}
+	
+	/*
+	//LISTAR TODAS
+		 public List<Utilizacao> findAll(){
+			 // return rep.findAll();
+			 return rep.findAllByOrderByNome();
+		 }
+		 */
 }

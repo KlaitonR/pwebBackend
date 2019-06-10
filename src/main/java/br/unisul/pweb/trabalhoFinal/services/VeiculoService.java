@@ -1,10 +1,9 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
+import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
 import br.unisul.pweb.trabalhoFinal.repositories.VeiculoRepository;
 
@@ -38,4 +37,11 @@ public class VeiculoService {
 	 rep.deleteById(id);
 	}
 	
+	/*
+	//LISTAR TODAS
+		 public List<Veiculo> findAll(){
+			 // return rep.findAll();
+			 return rep.findAllByOrderByNome();
+		 }
+	*/
 }
