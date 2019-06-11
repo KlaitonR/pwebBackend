@@ -52,15 +52,13 @@ public class BdService {
 		u4.setVl(v2);
 		u4.setFuncionario(f1);
 		
-		f1.getUtilizacoes().addAll(Arrays.asList(u1,u4));
-		f2.getUtilizacoes().addAll(Arrays.asList(u2,u3));
-		
-		v1.getUtilizacoes().addAll(Arrays.asList(u1,u2));
-		v2.getUtilizacoes().addAll(Arrays.asList(u3,u4));
-		
-		
 		utiRep.saveAll(Arrays.asList(u1,u2,u3,u4));
 		
+		f1.getUtilizacoes().addAll(Arrays.asList(u1,u4));
+		f2.getUtilizacoes().addAll(Arrays.asList(u2,u3));
+		v1.getUtilizacoes().addAll(Arrays.asList(u1,u2));
+		v2.getUtilizacoes().addAll(Arrays.asList(u3,u4));	
+	
 	}
 
 }

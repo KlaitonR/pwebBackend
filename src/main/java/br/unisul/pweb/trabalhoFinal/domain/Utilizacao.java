@@ -1,6 +1,8 @@
 package br.unisul.pweb.trabalhoFinal.domain;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,14 +16,20 @@ public class Utilizacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id //chave primaria
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto encremento
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(length=5) 
 	private Integer id;
-	
+	@Column(length=30) 
 	private String nomeFuncionario;
+	@Column(length=30) 
 	private String veiculo;
+	@Column(length=5) 
 	private int data;
+	@Column(length=5) 
 	private int hora;
+	@Column(length=5) 
 	private double kmInicial;
+	@Column(length=5) 
 	private double kmFinal;
 	
 	///*

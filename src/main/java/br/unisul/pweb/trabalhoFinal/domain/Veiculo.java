@@ -3,6 +3,8 @@ package br.unisul.pweb.trabalhoFinal.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,12 +18,17 @@ public class Veiculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id //chave primaria
-	@GeneratedValue(strategy=GenerationType.IDENTITY) //auto encremento
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column( length=5) 
 	private Integer id;
 	
+	@Column(length=4) 
 	private int ano;
+	@Column( length=10) 
 	private String placa;
+	@Column(length=15) 
 	private String marca;
+	@Column(length=15) 
 	private String modelo;
 	
 	///*
