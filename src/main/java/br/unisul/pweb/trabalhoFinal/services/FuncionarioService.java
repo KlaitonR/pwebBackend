@@ -37,12 +37,9 @@ public class FuncionarioService {
 	 rep.deleteById(id);
 	}
 	
-	/*
 	//LISTAR TODAS
-		 public List<Funcionario> findAll(){
-			 // return rep.findAll();
-			 return rep.findAllByOrderByNome();
-		 }
-	*/
-
+	public List<Funcionario> findAll(){
+		return rep.findAll();
+	}
+		 
 }

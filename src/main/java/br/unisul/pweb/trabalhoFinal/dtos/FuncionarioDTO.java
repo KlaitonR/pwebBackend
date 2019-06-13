@@ -3,6 +3,9 @@ package br.unisul.pweb.trabalhoFinal.dtos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
 import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 
@@ -12,7 +15,7 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
 	
 	private String nome;
-	
+	@JsonIgnore
 	private List<Utilizacao> utilizacoes = new ArrayList<>();
 	
 	
@@ -23,6 +26,7 @@ private static final long serialVersionUID = 1L;
 	public FuncionarioDTO(Funcionario f) {
 		id = f.getId();
 		nome = f.getNome();
+		utilizacoes = f.getUtilizacoes();
 	}
 	
 	public FuncionarioDTO(String nome) {

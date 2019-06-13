@@ -1,5 +1,6 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,11 +39,15 @@ public class UtilizacaoService {
 	 rep.deleteById(id);
 	}
 	
-	/*
+
 	//LISTAR TODAS
-		 public List<Utilizacao> findAll(){
-			 // return rep.findAll();
-			 return rep.findAllByOrderByNome();
-		 }
-		 */
+	public List<Utilizacao> findAll(){
+		return rep.findAll();
+	 }
+		 
+	//FILTRAR POR DATA
+	 public List<Utilizacao> OrdenarPorData(Date data){
+		return rep.findDistinctByDataContainingOrderByData(data);
+	 }
+		 
 }

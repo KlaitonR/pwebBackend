@@ -1,6 +1,7 @@
 package br.unisul.pweb.trabalhoFinal.resources;
 
 import java.net.URI;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class UtilizacaoResources {
 	@Autowired
 	private UtilizacaoService service;
 	
-	//BUSCAR POR ID
+		//BUSCAR POR ID
 		@RequestMapping(value="/{id}",method=RequestMethod.GET)
 		public ResponseEntity<Utilizacao> find(@PathVariable Integer id){
 			Utilizacao obj = service.find(id);
@@ -45,7 +46,6 @@ public class UtilizacaoResources {
 			obj = service.update(obj);
 			return ResponseEntity.noContent().build();
 		}
-
 		
 		//EXCLUIR
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
@@ -54,14 +54,18 @@ public class UtilizacaoResources {
 			return ResponseEntity.noContent().build();
 		}
 		
-		/*
 		//LISTAR TODAS
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<List<UtilizacaoDTO>> findAll() {
 			List<Utilizacao> lista = service.findAll();
-			//ou for para percorrer a lista
 			List<UtilizacaoDTO> listaDTO = lista.stream().map(obj -> new UtilizacaoDTO(obj)).collect(Collectors.toList()); 
 			return ResponseEntity.ok().body(listaDTO);
 		}
-		*/
+				
+		//FILTRAR POR DATA
+		@RequestMapping(value="/utilizacoes/data",method=RequestMethod.GET)
+		ResponseEntity<List<Utilizacao>> findDistinctByDataContainingOrderByData(@PathVariable Date data) {
+			List<Utilizacao> list = service.OrdenarPorData(data);
+			return ResponseEntity.ok().body(list);
+		}
 }

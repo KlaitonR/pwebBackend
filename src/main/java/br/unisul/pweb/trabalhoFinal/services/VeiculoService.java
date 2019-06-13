@@ -36,12 +36,10 @@ public class VeiculoService {
 	 find(id);
 	 rep.deleteById(id);
 	}
-	
-	/*
+
 	//LISTAR TODAS
-		 public List<Veiculo> findAll(){
-			 // return rep.findAll();
-			 return rep.findAllByOrderByNome();
-		 }
-	*/
+	 public List<Veiculo> findAll(){
+		return rep.findAll();
+	 }
+		 
 }

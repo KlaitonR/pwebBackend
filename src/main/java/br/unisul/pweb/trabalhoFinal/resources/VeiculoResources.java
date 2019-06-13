@@ -22,7 +22,7 @@ public class VeiculoResources {
 	@Autowired
 	private VeiculoService service;
 	
-	//BUSCAR POR ID
+		//BUSCAR POR ID
 		@RequestMapping(value="/{id}",method=RequestMethod.GET)
 		public ResponseEntity<Veiculo> find(@PathVariable Integer id){
 			Veiculo obj = service.find(id);
@@ -45,7 +45,6 @@ public class VeiculoResources {
 			obj = service.update(obj);
 			return ResponseEntity.noContent().build();
 		}
-
 		
 		//EXCLUIR
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
@@ -53,8 +52,7 @@ public class VeiculoResources {
 			service.delete(id);
 			return ResponseEntity.noContent().build();
 		}
-		
-		/*
+
 		//LISTAR TODAS
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<List<VeiculoDTO>> findAll() {
@@ -63,6 +61,5 @@ public class VeiculoResources {
 			List<VeiculoDTO> listaDTO = lista.stream().map(obj -> new VeiculoDTO(obj)).collect(Collectors.toList()); 
 			return ResponseEntity.ok().body(listaDTO);
 		}
-		*/
 	
 }

@@ -22,7 +22,7 @@ public class FuncionarioResources {
 	@Autowired
 	private FuncionarioService service;
 	
-	//BUSCAR POR ID
+		//BUSCAR POR ID
 		@RequestMapping(value="/{id}",method=RequestMethod.GET)
 		public ResponseEntity<Funcionario> find(@PathVariable Integer id){
 			Funcionario obj = service.find(id);
@@ -46,7 +46,6 @@ public class FuncionarioResources {
 			return ResponseEntity.noContent().build();
 		}
 
-		
 		//EXCLUIR
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 		public ResponseEntity<Void> delete(@PathVariable Integer id) {
@@ -54,17 +53,12 @@ public class FuncionarioResources {
 			return ResponseEntity.noContent().build();
 		}
 		
-		/*
 		//LISTAR TODAS
-				@RequestMapping(method=RequestMethod.GET)
-				public ResponseEntity<List<FuncionarioDTO>> findAll() {
-					List<Funcionario> lista = service.findAll();
-					//ou for para percorrer a lista
-					List<FuncionarioDTO> listaDTO = lista.stream().map(obj -> new FuncionarioDTO(obj)).collect(Collectors.toList()); 
-					return ResponseEntity.ok().body(listaDTO);
-				}
-				
-				*/
-			
+		@RequestMapping(method=RequestMethod.GET)
+		public ResponseEntity<List<FuncionarioDTO>> findAll() {
+			List<Funcionario> lista = service.findAll();
+			List<FuncionarioDTO> listaDTO = lista.stream().map(obj -> new FuncionarioDTO(obj)).collect(Collectors.toList()); 
+			return ResponseEntity.ok().body(listaDTO);
+		}
 	
 }

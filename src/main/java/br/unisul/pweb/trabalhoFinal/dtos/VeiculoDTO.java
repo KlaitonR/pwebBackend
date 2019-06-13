@@ -3,6 +3,7 @@ package br.unisul.pweb.trabalhoFinal.dtos;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
 
@@ -15,7 +16,7 @@ public class VeiculoDTO implements Serializable{
 	private String placa;
 	private String marca;
 	private String modelo;
-	
+	@JsonIgnore
 	private List<Utilizacao> utilizacoes = new ArrayList<>();
 	
 	public VeiculoDTO() {
@@ -24,7 +25,11 @@ public class VeiculoDTO implements Serializable{
 	
 	public VeiculoDTO(Veiculo v) {
 		id = v.getId();
-		v.toString();
+		ano = v.getAno();
+		placa = v.getPlaca();
+		marca = v.getMarca();
+		modelo = v.getMarca();
+		utilizacoes = v.getUtilizacoes();
 	}
 	
 	public VeiculoDTO (int ano,String placa,String marca,String modelo) {
@@ -80,7 +85,6 @@ public class VeiculoDTO implements Serializable{
 		this.modelo = modelo;
 	}
 
-	///*
 	public List<Utilizacao> getUtilizacoes() {
 		return utilizacoes;
 	}
@@ -88,7 +92,6 @@ public class VeiculoDTO implements Serializable{
 	public void setUtilizacoes(List<Utilizacao> utilizacoes) {
 		this.utilizacoes = utilizacoes;
 	}
-	//*/
 
 	@Override
 	public int hashCode() {

@@ -1,6 +1,7 @@
 package br.unisul.pweb.trabalhoFinal.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Utilizacao implements Serializable {
@@ -24,15 +27,16 @@ public class Utilizacao implements Serializable {
 	@Column(length=30) 
 	private String veiculo;
 	@Column(length=5) 
-	private int data;
+	@JsonFormat(pattern="dd/MM/yyyy")
+	private Date data;
 	@Column(length=5) 
-	private int hora;
+	@JsonFormat(pattern="HH:mm")
+	private Date hora;
 	@Column(length=5) 
 	private double kmInicial;
 	@Column(length=5) 
 	private double kmFinal;
 	
-	///*
 	@ManyToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;
@@ -40,13 +44,12 @@ public class Utilizacao implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="veiculo_id")
 	private Veiculo vl;
-	//*/
 	
 	public Utilizacao() {
 		
 	}
 	
-	public Utilizacao(Veiculo MarcaModelo,Funcionario nomeFun, int dt,int hr, double kmIn, double kmFin) {
+	public Utilizacao(Veiculo MarcaModelo,Funcionario nomeFun, Date dt,Date hr, double kmIn, double kmFin) {
 		super();
 		this.veiculo = MarcaModelo.toString();
 		this.nomeFuncionario = nomeFun.getNome();
@@ -68,18 +71,23 @@ public class Utilizacao implements Serializable {
 	public void setNomeFuncionario(String nomeFuncionario) {
 		this.nomeFuncionario = nomeFuncionario;
 	}
-	public int getData() {
+	
+	public Date getData() {
 		return data;
 	}
-	public void setData(int data) {
+
+	public void setData(Date data) {
 		this.data = data;
 	}
-	public int getHora() {
+
+	public Date getHora() {
 		return hora;
 	}
-	public void setHora(int hora) {
+
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
+
 	public double getKmInicial() {
 		return kmInicial;
 	}

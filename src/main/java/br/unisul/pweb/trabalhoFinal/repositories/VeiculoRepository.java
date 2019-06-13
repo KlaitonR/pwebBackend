@@ -9,8 +9,6 @@ import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
 @Repository
 public interface VeiculoRepository extends JpaRepositoryImplementation<Veiculo, Integer>{
 
-	/*
-	 @Transactional(readOnly=true)
-		public List<Veiculo> findAllByOrderByNome();
-	*/
+	@Transactional(readOnly=true)
+	public List<Veiculo> findAllByOrderById();
 }

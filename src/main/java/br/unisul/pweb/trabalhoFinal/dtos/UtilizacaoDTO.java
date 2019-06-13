@@ -1,6 +1,6 @@
 package br.unisul.pweb.trabalhoFinal.dtos;
-
 import java.io.Serializable;
+import java.util.Date;
 import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
 import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
@@ -10,17 +10,12 @@ public class UtilizacaoDTO implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	
 	private String nomeFuncionario;
 	private String veiculo;
-	private int data;
-	private int hora;
+	private Date data;
+	private Date hora;
 	private double kmInicial;
 	private double kmFinal;
-	
-	private Funcionario funcionario;
-	
-	private Veiculo vl;
 	
 	public UtilizacaoDTO() {
 		
@@ -29,9 +24,14 @@ private static final long serialVersionUID = 1L;
 	public UtilizacaoDTO(Utilizacao u) {
 		id = u.getId();
 		veiculo = u.getVeiculo();
+		nomeFuncionario = u.getNomeFuncionario();
+		data = u.getData();
+		hora = u.getHora();
+		kmInicial = u.getKmInicial();
+		kmFinal = u.getKmFinal();
 	}
 	
-	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, int dt,int hr, double kmIn, double kmFin) {
+	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, Date dt,Date hr, double kmIn, double kmFin) {
 		super();
 		this.veiculo = MarcaModelo.toString();
 		this.nomeFuncionario = nomeFun.getNome();
@@ -53,18 +53,23 @@ private static final long serialVersionUID = 1L;
 	public void setNomeFuncionario(String nomeFuncionario) {
 		this.nomeFuncionario = nomeFuncionario;
 	}
-	public int getData() {
+	
+	public Date getData() {
 		return data;
 	}
-	public void setData(int data) {
+
+	public void setData(Date data) {
 		this.data = data;
 	}
-	public int getHora() {
+
+	public Date getHora() {
 		return hora;
 	}
-	public void setHora(int hora) {
+
+	public void setHora(Date hora) {
 		this.hora = hora;
 	}
+
 	public double getKmInicial() {
 		return kmInicial;
 	}
@@ -85,25 +90,6 @@ private static final long serialVersionUID = 1L;
 	public void setVeiculo(String veiculo) {
 		this.veiculo = veiculo;
 	}
-	
-	
-	///*
-	public Funcionario getFuncionario() {
-		return funcionario;
-	}
-
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
-	}
-
-	public Veiculo getVeiculos() {
-		return vl;
-	}
-
-	public void setVeiculos(Veiculo veiculos) {
-		this.vl = veiculos;
-	}
-	//*/
 
 	@Override
 	public int hashCode() {
