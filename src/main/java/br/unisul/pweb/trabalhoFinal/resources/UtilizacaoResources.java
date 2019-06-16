@@ -1,7 +1,6 @@
 package br.unisul.pweb.trabalhoFinal.resources;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,8 +62,8 @@ public class UtilizacaoResources {
 		}
 				
 		//FILTRAR POR DATA
-		@RequestMapping(value="/utilizacoes/data",method=RequestMethod.GET)
-		ResponseEntity<List<Utilizacao>> findDistinctByDataContainingOrderByData(@PathVariable Date data) {
+		@RequestMapping(value="/{data}/data",method=RequestMethod.GET)
+		ResponseEntity<List<Utilizacao>> findDistinctByDataContainingOrderByData(@PathVariable String data) {
 			List<Utilizacao> list = service.OrdenarPorData(data);
 			return ResponseEntity.ok().body(list);
 		}

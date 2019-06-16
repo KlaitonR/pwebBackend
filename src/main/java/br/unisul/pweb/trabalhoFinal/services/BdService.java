@@ -1,7 +1,6 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,13 +35,10 @@ public class BdService {
 		
 		funRep.saveAll(Arrays.asList(f1,f2));
 		
-		SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
-		SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
-		
-		Utilizacao u1 = new Utilizacao(v1,f1,data.parse("25/11/2018"),hora.parse("10:32"),10.6,20.7);
-		Utilizacao u2 = new Utilizacao(v1,f2,data.parse("19/12/2018"),hora.parse("10:32"),10.6,20.7);
-		Utilizacao u3 = new Utilizacao(v2,f2,data.parse("02/01/2019 null:null"),hora.parse("10:32"),10.6,20.7);
-		Utilizacao u4 = new Utilizacao(v2,f1,data.parse("7/04/2019"),hora.parse("10:32"),10.6,20.7);
+		Utilizacao u1 = new Utilizacao(v1,f1,"25-11-2018","10:32",10.6,20.7);
+		Utilizacao u2 = new Utilizacao(v1,f2,"19-12-2018","10:32",10.6,20.7);
+		Utilizacao u3 = new Utilizacao(v2,f2,"02-01-2019","10:32",10.6,20.7);
+		Utilizacao u4 = new Utilizacao(v2,f1,"07-04-2019","10:32",10.6,20.7);
 		
 		u1.setVl(v1);
 		u1.setFuncionario(f1);

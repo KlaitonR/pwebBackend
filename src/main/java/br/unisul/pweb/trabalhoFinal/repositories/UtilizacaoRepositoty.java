@@ -1,6 +1,5 @@
 package br.unisul.pweb.trabalhoFinal.repositories;
 
-import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;
 import org.springframework.stereotype.Repository;
@@ -14,5 +13,5 @@ public interface UtilizacaoRepositoty extends JpaRepositoryImplementation<Utiliz
 	public List<Utilizacao> findAllByOrderByNomeFuncionario();
 
 	 @Transactional(readOnly=true)
-	 public List<Utilizacao> findDistinctByDataContainingOrderByData(Date data);
+	 public List<Utilizacao> findDistinctByDataContainingOrderByData(String data);
 }

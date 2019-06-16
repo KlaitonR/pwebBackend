@@ -1,6 +1,5 @@
 package br.unisul.pweb.trabalhoFinal.dtos;
 import java.io.Serializable;
-import java.util.Date;
 import br.unisul.pweb.trabalhoFinal.domain.Funcionario;
 import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 import br.unisul.pweb.trabalhoFinal.domain.Veiculo;
@@ -12,8 +11,8 @@ private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String nomeFuncionario;
 	private String veiculo;
-	private Date data;
-	private Date hora;
+	private String data;
+	private String hora;
 	private double kmInicial;
 	private double kmFinal;
 	
@@ -31,7 +30,7 @@ private static final long serialVersionUID = 1L;
 		kmFinal = u.getKmFinal();
 	}
 	
-	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, Date dt,Date hr, double kmIn, double kmFin) {
+	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, String dt,String hr, double kmIn, double kmFin) {
 		super();
 		this.veiculo = MarcaModelo.toString();
 		this.nomeFuncionario = nomeFun.getNome();
@@ -53,20 +52,20 @@ private static final long serialVersionUID = 1L;
 	public void setNomeFuncionario(String nomeFuncionario) {
 		this.nomeFuncionario = nomeFuncionario;
 	}
-	
-	public Date getData() {
+
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
-	public Date getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(Date hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 

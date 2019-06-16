@@ -1,6 +1,5 @@
 package br.unisul.pweb.trabalhoFinal.services;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,7 @@ public class UtilizacaoService {
 	 }
 		 
 	//FILTRAR POR DATA
-	 public List<Utilizacao> OrdenarPorData(Date data){
+	 public List<Utilizacao> OrdenarPorData(String data){
 		return rep.findDistinctByDataContainingOrderByData(data);
 	 }
 		 
