@@ -28,7 +28,7 @@ public class VeiculoDTO implements Serializable{
 		ano = v.getAno();
 		placa = v.getPlaca();
 		marca = v.getMarca();
-		modelo = v.getMarca();
+		modelo = v.getModelo();
 		utilizacoes = v.getUtilizacoes();
 	}
 	
