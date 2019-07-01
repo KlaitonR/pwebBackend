@@ -10,7 +10,7 @@ import br.unisul.pweb.trabalhoFinal.domain.Utilizacao;
 public interface UtilizacaoRepositoty extends JpaRepositoryImplementation<Utilizacao, Integer>{
 	
 	@Transactional(readOnly=true)
-	public List<Utilizacao> findAllByOrderByNomeFuncionario();
+	public List<Utilizacao> findAllByOrderByFuncionario(); //findAllByOrderByNomeFuncionario
 
 	 @Transactional(readOnly=true)
 	 public List<Utilizacao> findDistinctByDataContainingOrderByData(String data);

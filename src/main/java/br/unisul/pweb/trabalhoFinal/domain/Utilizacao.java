@@ -18,10 +18,10 @@ public class Utilizacao implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(length=5) 
 	private Integer id;
-	@Column(length=30) 
-	private String nomeFuncionario;
-	@Column(length=30) 
-	private String veiculo;
+	//@Column(length=30) 
+	//private String nomeFuncionario;
+	//@Column(length=30) 
+	//private String veiculo;
 	@Column(length=20) 
 	private String data;
 	@Column(length=20) 
@@ -43,10 +43,13 @@ public class Utilizacao implements Serializable {
 		
 	}
 	
-	public Utilizacao(Veiculo MarcaModelo,Funcionario nomeFun, String dt,String hr, double kmIn, double kmFin) {
+	public Utilizacao(Veiculo vei, Funcionario fun, String dt,String hr, double kmIn, double kmFin) {
+		//Veiculo MarcaModelo,Funcionario nomeFun,
 		super();
-		this.veiculo = MarcaModelo.toString();
-		this.nomeFuncionario = nomeFun.getNome();
+		//this.veiculo = MarcaModelo.toString();
+		//this.nomeFuncionario = nomeFun.getNome();
+		this.vl = vei;
+		this.funcionario = fun;
 		this.data = dt;
 		this.hora = hr;
 		this.kmInicial = kmIn;
@@ -59,12 +62,12 @@ public class Utilizacao implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNomeFuncionario() {
+	/*public String getNomeFuncionario() {
 		return nomeFuncionario;
 	}
 	public void setNomeFuncionario(String nomeFuncionario) {
 		this.nomeFuncionario = nomeFuncionario;
-	}
+	}*/
 
 	public String getData() {
 		return data;
@@ -94,7 +97,7 @@ public class Utilizacao implements Serializable {
 	public void setKmFinal(double kmFinal) {
 		this.kmFinal = kmFinal;
 	}
-	
+	/*
 	public String getVeiculo() {
 		return veiculo;
 	}
@@ -102,8 +105,7 @@ public class Utilizacao implements Serializable {
 	public void setVeiculo(String veiculo) {
 		this.veiculo = veiculo;
 	}
-	
-	///*
+	*/
 	public Funcionario getFuncionario() {
 		return funcionario;
 	}

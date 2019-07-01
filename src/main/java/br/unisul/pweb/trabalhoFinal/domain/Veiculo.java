@@ -31,11 +31,9 @@ public class Veiculo implements Serializable {
 	@Column(length=15) 
 	private String modelo;
 	
-	///*
 	@JsonIgnore
-	@OneToMany(mappedBy="veiculo")
+	@OneToMany(mappedBy="vl")
 	private List<Utilizacao> utilizacoes = new ArrayList<>();
-	//*/
 	
 	public Veiculo() {
 		

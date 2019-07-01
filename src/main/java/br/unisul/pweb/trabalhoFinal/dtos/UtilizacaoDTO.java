@@ -9,12 +9,14 @@ public class UtilizacaoDTO implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String nomeFuncionario;
-	private String veiculo;
+//	private String nomeFuncionario;
+	//private String veiculo;
 	private String data;
 	private String hora;
 	private double kmInicial;
 	private double kmFinal;
+	Veiculo veiculo;
+	Funcionario funcionario;
 	
 	public UtilizacaoDTO() {
 		
@@ -22,18 +24,23 @@ private static final long serialVersionUID = 1L;
 	
 	public UtilizacaoDTO(Utilizacao u) {
 		id = u.getId();
-		veiculo = u.getVeiculo();
-		nomeFuncionario = u.getNomeFuncionario();
+		//veiculo = u.getVeiculo();
+		//nomeFuncionario = u.getNomeFuncionario();
+		veiculo = u.getVl();
+		funcionario = u.getFuncionario();
 		data = u.getData();
 		hora = u.getHora();
 		kmInicial = u.getKmInicial();
 		kmFinal = u.getKmFinal();
 	}
 	
-	public UtilizacaoDTO(Veiculo MarcaModelo,Funcionario nomeFun, String dt,String hr, double kmIn, double kmFin) {
+	public UtilizacaoDTO(Veiculo vei,Funcionario fun, String dt,String hr, double kmIn, double kmFin) {
+		//Veiculo MarcaModelo,Funcionario nomeFun,
 		super();
-		this.veiculo = MarcaModelo.toString();
-		this.nomeFuncionario = nomeFun.getNome();
+		//this.veiculo = MarcaModelo.toString();
+		//this.nomeFuncionario = nomeFun.getNome();
+		this.veiculo = vei;
+		this.funcionario = fun;
 		this.data = dt;
 		this.hora = hr;
 		this.kmInicial = kmIn;
@@ -46,13 +53,13 @@ private static final long serialVersionUID = 1L;
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNomeFuncionario() {
+	/*public String getNomeFuncionario() {
 		return nomeFuncionario;
 	}
 	public void setNomeFuncionario(String nomeFuncionario) {
 		this.nomeFuncionario = nomeFuncionario;
 	}
-
+*/
 	public String getData() {
 		return data;
 	}
@@ -81,7 +88,7 @@ private static final long serialVersionUID = 1L;
 	public void setKmFinal(double kmFinal) {
 		this.kmFinal = kmFinal;
 	}
-	
+	/*
 	public String getVeiculo() {
 		return veiculo;
 	}
@@ -89,6 +96,9 @@ private static final long serialVersionUID = 1L;
 	public void setVeiculo(String veiculo) {
 		this.veiculo = veiculo;
 	}
+	*/
+	
+	
 
 	@Override
 	public int hashCode() {
@@ -96,6 +106,22 @@ private static final long serialVersionUID = 1L;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 
 	@Override
